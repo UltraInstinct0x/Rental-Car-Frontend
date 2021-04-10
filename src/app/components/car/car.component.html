@@ -1,23 +1,4 @@
-<table class="table table-success table-striped">
-    <thead>
-        <tr>
-            <td>Car Name</td>
-            <td>Brand</td>
-            <td>Color</td>
-            <td>Daily Price</td>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let car of carDetails">
-            <td>{{car.carName}}</td>
-            <td>{{car.brandName}}</td>
-            <td>{{car.colorName}}</td>
-            <td>{{car.dailyPrice}}</td>
-        </tr>
-    </tbody>
-  </table>
-
-<table class="table table-success table-striped">
+<table class="table table-warning table-striped">
     <thead>
         <tr>
             <td>#</td>
@@ -29,7 +10,8 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let car of cars">
+        <tr *ngFor="let car of cars"
+        routerLink="/car/{{car.id}}">
             <td>{{car.id}}</td>
             <td>{{car.brandId}}</td>
             <td>{{car.colorId}}</td>
@@ -39,3 +21,4 @@
         </tr>
     </tbody>
   </table>
+

@@ -10,7 +10,8 @@ import { CustomerComponent } from './components/customer/customer.component';
 import { NaviComponent } from './components/navi/navi.component';
 import { RentalComponent } from './components/rental/rental.component';
 import { CarComponent } from './components/car/car.component';
-import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { CarCardComponent } from './components/car-card/car-card.component';
+import { CarDetailsComponent } from './components/car-details/car-details.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
     NaviComponent,
     RentalComponent,
     CarComponent,
-    SidebarComponent
+    CarCardComponent,
+    CarDetailsComponent,
   ],
   imports: [
     BrowserModule,

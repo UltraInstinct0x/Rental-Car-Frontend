@@ -18,9 +18,16 @@
     data-bs-parent="#accordionExample"
   >
     <div class="accordion-body">
-        <ul class="list-group">
-            <li *ngFor="let brand of brands" class="list-group-item">{{brand.name}}</li>
-          </ul>
+      <ul class="list-group">
+        <li
+          *ngFor="let brand of brands"
+          (click)="this.setCurrentBrand(brand)"
+          routerLink="cars/brands/{{ brand.id }}"
+          [class]="getCurrentBrandClass(brand)"
+        >
+          {{ brand.name }}
+        </li>
+      </ul>
     </div>
   </div>
 </div>

@@ -1,20 +1,26 @@
-<table class="table table-success table-striped">
+<div class="row">
+  <table class="table table-warning table-striped">
     <thead>
-        <tr>
-            <td>#</td>
-            <td>CarId</td>
-            <td>Customer Id</td>
-            <td>Rent Date</td>
-            <td>Return Date</td>
-        </tr>
+      <tr>
+        <td>#</td>
+        <td>Brand Name</td>
+        <td>Customer Id</td>  
+        <td>Rent Date</td>
+        <td>Return Date</td>
+      </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let rental of rentals">
-            <td>{{rental.id}}</td>
-            <td>{{rental.carId}}</td>
-            <td>{{rental.customerId}}</td>
-            <td>{{rental.rentDate}}</td>
-            <td>{{rental.returnDate}}</td>
-        </tr>
+      <tr *ngFor="let rental of rentalDetails">
+        <td>{{ rental.id }}</td>
+        <td>{{ rental.brandName }}</td>
+        <td>{{ rental.companyName }}</td>
+        <td>{{ rental.rentDate }}</td>
+        <td>{{ rental.returnDate }}</td>
+      </tr>
     </tbody>
   </table>
+</div>
+<div class="row">
+  <button type="button" routerLink="" class="btn btn-dark" >Go Back</button>
+</div>
+

@@ -18,9 +18,16 @@
     data-bs-parent="#accordionexample"
   >
     <div class="accordion-body">
-        <ul class="list-group">
-            <li *ngFor="let color of colors" class="list-group-item">{{color.name}}</li>
-          </ul>
+      <ul class="list-group">
+        <li
+          *ngFor="let color of colors"
+          (click)="this.setCurrentColor(color)"
+          [class]="getCurrentColorClass(color)"
+          routerLink="/cars/colors/{{color.id}}"
+        >
+          {{ color.name }}
+        </li>
+      </ul>
     </div>
   </div>
 </div>
