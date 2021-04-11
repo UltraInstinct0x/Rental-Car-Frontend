@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { FormsModule,ReactiveFormsModule } from "@angular/forms";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
@@ -30,6 +30,9 @@ import { EditpageComponent } from './components/editpage/editpage.component';
 import { EditbrandComponent } from './components/editpage/editbrand/editbrand.component';
 import { EditcolorComponent } from './components/editpage/editcolor/editcolor.component';
 import { EditcarComponent } from './components/editpage/editcar/editcar.component';
+import { LoginComponent } from './components/login/login.component';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { RegisterComponent } from './components/register/register.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +58,8 @@ import { EditcarComponent } from './components/editpage/editcar/editcar.componen
     EditbrandComponent,
     EditcolorComponent,
     EditcarComponent,
+    LoginComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
@@ -65,7 +70,7 @@ import { EditcarComponent } from './components/editpage/editcar/editcar.componen
     ReactiveFormsModule,
     ToastrModule.forRoot({positionClass:'toast-bottom-right'}),
   ],
-  providers: [],
+  providers: [{provide:HTTP_INTERCEPTORS, useClass:AuthInterceptor,multi:true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

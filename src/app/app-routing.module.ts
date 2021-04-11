@@ -11,7 +11,10 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
 import { EditbrandComponent } from './components/editpage/editbrand/editbrand.component';
 import { EditcarComponent } from './components/editpage/editcar/editcar.component';
 import { EditcolorComponent } from './components/editpage/editcolor/editcolor.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
 import { RentalComponent } from './components/rental/rental.component';
+import { LoginGuard } from './guards/login.guard';
 
 const routes: Routes = [
 {path:"", pathMatch:"full", component:CarComponent},
@@ -19,12 +22,14 @@ const routes: Routes = [
 {path:"cars/brands/:brandId", pathMatch:"full", component:CarComponent},
 {path:"cars/filter/:brand/:color", pathMatch:"full", component:CarComponent},
 {path:"cars/cardetail/:carId", pathMatch:"full", component:CarCardComponent},
-{path:"cars/add", pathMatch:"full", component:AddcarComponent},
-{path:"brands/add", pathMatch:"full", component:AddbrandComponent},
-{path:"colors/add", pathMatch:"full", component:AddcolorComponent},
-{path:"brandedit", pathMatch:"full", component:EditbrandComponent},
-{path:"coloredit", pathMatch:"full", component:EditcolorComponent},
-{path:"caredit/:carId", pathMatch:"full", component:EditcarComponent},
+{path:"cars/add", pathMatch:"full", component:AddcarComponent,canActivate:[LoginGuard]},
+{path:"brands/add", pathMatch:"full", component:AddbrandComponent,canActivate:[LoginGuard]},
+{path:"colors/add", pathMatch:"full", component:AddcolorComponent,canActivate:[LoginGuard]},
+{path:"brandedit", pathMatch:"full", component:EditbrandComponent,canActivate:[LoginGuard]},
+{path:"coloredit", pathMatch:"full", component:EditcolorComponent,canActivate:[LoginGuard]},
+{path:"caredit/:carId", pathMatch:"full", component:EditcarComponent,canActivate:[LoginGuard]},
+{path:"login", pathMatch:"full", component:LoginComponent,canActivate:[LoginGuard]},
+{path:"register", pathMatch:"full", component:RegisterComponent,canActivate:[LoginGuard]},
 {path:"cars/colors/:colorId", pathMatch:"full", component:CarComponent},
 {
   path: 'car/:carId',
