@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from "@angular/common/http";
-import { FormsModule } from "@angular/forms";
+import { FormsModule,ReactiveFormsModule } from "@angular/forms";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -22,6 +23,13 @@ import { FiltercarsComponent } from './components/filtercars/filtercars.componen
 import { ToastrModule } from 'ngx-toastr';
 import { AddrentalComponent } from './components/addrental/addrental.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
+import { AddcolorComponent } from './components/addcolor/addcolor.component';
+import { AddbrandComponent } from './components/addbrand/addbrand.component';
+import { AddcarComponent } from './components/addcar/addcar.component';
+import { EditpageComponent } from './components/editpage/editpage.component';
+import { EditbrandComponent } from './components/editpage/editbrand/editbrand.component';
+import { EditcolorComponent } from './components/editpage/editcolor/editcolor.component';
+import { EditcarComponent } from './components/editpage/editcar/editcar.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +48,13 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
     FiltercarsComponent,
     AddrentalComponent,
     CheckoutComponent,
+    AddcolorComponent,
+    AddbrandComponent,
+    AddcarComponent,
+    EditpageComponent,
+    EditbrandComponent,
+    EditcolorComponent,
+    EditcarComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,6 +62,7 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
     HttpClientModule,
     FormsModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
     ToastrModule.forRoot({positionClass:'toast-bottom-right'}),
   ],
   providers: [],

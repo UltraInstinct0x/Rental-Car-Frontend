@@ -20,8 +20,10 @@
     <div class="accordion-body">
       <div class="mb-3">
         <label for="filterText" class="form-label">Brand Search</label>
+        <span class="badge bg-secondary" routerLink="brandedit" >Edit Brands</span>
         <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="Search for a brand.">
       </div>
+      
       <ul class="list-group">
         <li routerLink="" [class]="getCurrentBrandClass(clearBrand)" (click)="this.setCurrentBrand(clearBrand)"> All Brands</li>
         <li
@@ -31,6 +33,7 @@
           [class]="getCurrentBrandClass(brand)"
         >
           {{ brand.name }}
+          
         </li>
       </ul>
     </div>

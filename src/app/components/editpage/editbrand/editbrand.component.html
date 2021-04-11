@@ -1,0 +1,35 @@
+<div class="row">
+    <br />
+  </div>
+  <div class="content">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header"><h5 class="title">Brand Edit Page</h5></div>
+        <div class="card-body">
+          <form [formGroup]="brandEditForm">
+            <div class="mb-3">
+              <div class="form-group">
+                <label for="name">Brand Name</label>
+                <input
+                  type="text"
+                  id="name"
+                  formControlName="name"
+                  placeholder="Brand Name"
+                  class="form-control"
+                />
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="card-footer text-center">
+          <button class="btn btn-dark btn-lg" (click)="update()">
+            Update
+          </button>
+          <div> <br> </div>
+          <button class="btn btn-dark btn-lg" (click)="delete()">
+            Delete
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>

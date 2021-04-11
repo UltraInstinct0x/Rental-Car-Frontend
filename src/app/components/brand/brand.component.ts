@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 import { Brand } from 'src/app/models/brand';
 import { BrandService } from 'src/app/services/brand.service';
 
@@ -9,11 +11,14 @@ import { BrandService } from 'src/app/services/brand.service';
 })
 export class BrandComponent implements OnInit {
 
+  brand:Brand
   currentBrand:Brand = {id:0, name:""}
   brands:Brand[]=[];
   clearBrand:Brand={id:0, name:""}
   filterText!:string;
-  constructor(private brandService:BrandService) { }
+  brandEditForm:FormGroup;
+  formBuilder: any;
+  constructor(private brandService:BrandService,private toastrService:ToastrService) { }
 
   ngOnInit(): void {
     this.getBrands();
@@ -36,4 +41,6 @@ export class BrandComponent implements OnInit {
       return 'list-group-item';
     }
   }
+
+  
 }
