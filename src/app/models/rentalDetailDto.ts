@@ -9,6 +9,7 @@ export interface RentalDetailDto{
     modelYear:number
     companyName:string
     rentDate:Date
+    rentDateEnd:Date
     returnDate:Date
     description:string
 }

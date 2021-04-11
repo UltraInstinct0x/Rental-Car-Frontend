@@ -12,6 +12,8 @@ export class ColorComponent implements OnInit {
 
   currentColor:Color = {id:0, name:""};
   colors:Color[]=[];
+  clearColor:Color={id:0, name:""};
+  filterText!:string;
   constructor(private colorService:ColorService) { }
 
   ngOnInit(): void {
@@ -28,7 +30,7 @@ export class ColorComponent implements OnInit {
     this.currentColor=color;
   }
   getCurrentColorClass(color:Color){
-    if (color == this.currentColor) {
+    if (color.id == this.currentColor.id) {
       return 'list-group-item list-group-item-dark';
     } else {
       return 'list-group-item';

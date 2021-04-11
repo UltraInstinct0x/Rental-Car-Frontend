@@ -1,0 +1,114 @@
+<div class="container-fluid container-md py-5 mb-5">
+    <div class="row">
+      <div class="col-lg">
+        <h1 class="display-1 fw-bold">{{ brand?.name }}</h1>
+        <h2 class="display-3 fw-light">
+          {{ car?.description }}
+          <span class="border border-secondary rounded-1 px-3">{{
+            car?.modelYear
+          }}</span>
+        </h2>
+        <div class="my-5">
+          <h6 class="display-6 fw-light">Description:</h6>
+          {{ car?.description }}
+        </div>
+      </div>
+      <div class="col-lg">
+        <div
+          id="car-images-carousel"
+          class="carousel carousel-dark slide"
+          data-bs-ride="carousel"
+        >
+          <div class="carousel-indicators">
+            <button
+              *ngFor="let carImage of carImages; let i = index"
+              type="button"
+              data-bs-target="#car-images-carousel"
+              attr.data-bs-slide-to="{{ i }}"
+              class="{{ isActiveCarousel(i) }}"
+              aria-current="true"
+              attr.aria-label="Car Image {{ i }}"
+            ></button>
+          </div>
+          <div class="carousel-inner">
+            <div
+              *ngFor="let carImage of carImages; let i = index"
+              class="carousel-item {{ isActiveCarousel(i) }} w-100"
+            >
+              <div class="d-flex align-items-center justify-content-center h-100">
+                <img
+                  src="{{ getCarImageUrl(carImage.id) }}"
+                  class="d-block w-100"
+                  alt="Rent {{ brand.name }} {{ car.description }} {{
+                    car.modelYear
+                  }} Car Image"
+                />
+              </div>
+            </div>
+          </div>
+          <button
+            class="carousel-control-prev"
+            type="button"
+            data-bs-target="#car-images-carousel"
+            data-bs-slide="prev"
+          >
+            <span
+              class="carousel-control-prev-icon text-shadow"
+              aria-hidden="true"
+            ></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button
+            class="carousel-control-next"
+            type="button"
+            data-bs-target="#car-images-carousel"
+            data-bs-slide="next"
+          >
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  
+    <div id="book-car-menu">
+      <h5 class="display-5">Rent This Car</h5>
+      <div class="bg-light rounded-1 shadow my-5 my-xl-0 p-3 ps-4">
+        <form class="row">
+          <div class="col-md form-group">
+            <label for="rent-start-date-input" class="form-label text-dark"
+              >Pick-up Date:</label
+            >
+            <input
+              [(ngModel)]="rentDate"
+              name="rentStartDate"
+              class="form-control"
+              type="datetime-local"
+              id="rent-start-date-input"
+              required
+            />
+          </div>
+          <div class="col-md form-group">
+            <label for="rent-end-date-input" class="form-label text-dark"
+              >Return Date:</label
+            >
+            <input
+              [(ngModel)]="rentDateEnd"
+              name="rentDateEnd"
+              class="form-control"
+              type="datetime-local"
+              id="rent-date-end-input"
+              required
+            />
+          </div>
+          <button
+            type="submit"
+            (click)="rentCar()"
+            class="col-lg btn btn-primary rounded-1 mt-3 p-3 m-lg-0 p-lg-0"
+          >
+            Rent Now!
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>

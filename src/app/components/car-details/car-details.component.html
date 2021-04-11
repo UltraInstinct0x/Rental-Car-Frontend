@@ -1,19 +1,6 @@
 <div class="container-fluid container-md py-5 mb-5">
   <div class="row">
     <div class="col-lg">
-      <h1 class="display-1 fw-bold">{{ brand?.name }}</h1>
-      <h2 class="display-3 fw-light">
-        {{ car?.description }}
-        <span class="border border-secondary rounded-1 px-3">{{
-          car?.modelYear
-        }}</span>
-      </h2>
-      <div>
-        <h6 class="display-4 fw-light">Description:</h6>
-        {{ car?.description }}
-      </div>
-    </div>
-    <div class="col-lg">
       <div
         id="car-images-controls"
         class="carousel carousel-dark slide"
@@ -69,9 +56,30 @@
         </button>
       </div>
     </div>
-
-    <div class="row">
-      <button type="button" routerLink="" class="btn btn-dark">Go Back</button>
+    <div class="col-lg">
+      <h1 class="display-1 fw-bold">{{ brand?.name }}</h1>
+      <h2 class="display-3 fw-light">
+        {{ car?.description }}
+        <span class="border border-secondary rounded-1 px-3">{{
+          car?.modelYear
+        }}</span>
+      </h2>
+      <div>
+        <h6 class="display-4 fw-light">Description:</h6>
+        {{ car?.description }}
+      </div>
     </div>
   </div>
 </div>
+  <div class="row">
+    <a
+      routerLink="/rent/{{car.id}}"
+      class="btn btn-success"
+      style="text-align: center"
+      >Rent Now</a
+    >
+  </div>
+  <div class="row">
+    <button type="button" routerLink="" class="btn btn-dark">Go Back</button>
+
+  </div>

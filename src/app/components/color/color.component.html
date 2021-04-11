@@ -17,10 +17,16 @@
     aria-labelledby="headingTwo"
     data-bs-parent="#accordionexample"
   >
+  
     <div class="accordion-body">
+      <div class="mb-3">
+        <label for="filterText" class="form-label">Color Search</label>
+        <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="Search for a color.">
+      </div>
       <ul class="list-group">
+        <li routerLink="" [class]="getCurrentColorClass(clearColor)" (click)="this.setCurrentColor(clearColor)"> All Colors</li>
         <li
-          *ngFor="let color of colors"
+          *ngFor="let color of colors | colorFilter:filterText"
           (click)="this.setCurrentColor(color)"
           [class]="getCurrentColorClass(color)"
           routerLink="/cars/colors/{{color.id}}"

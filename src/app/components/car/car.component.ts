@@ -1,14 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Brand } from 'src/app/models/brand';
 import { Car } from 'src/app/models/car';
 import { CarDetailDto } from 'src/app/models/carDetailDto';
-import { CarImage } from 'src/app/models/carImage';
-import { Color } from 'src/app/models/color';
-import { BrandService } from 'src/app/services/brand.service';
-import { CarImageService } from 'src/app/services/car-image.service';
+
 import { CarService } from 'src/app/services/car.service';
-import { ColorService } from 'src/app/services/color.service';
 
 @Component({
   selector: 'app-car',
@@ -16,7 +11,9 @@ import { ColorService } from 'src/app/services/color.service';
   styleUrls: ['./car.component.css'],
 })
 export class CarComponent implements OnInit {
-  cars: Car[] = [];
+  cars: Car[]=[];
+  filteredCars!: CarDetailDto[];
+  filterText!:string;
 
   constructor(
     private carService: CarService,
@@ -27,9 +24,10 @@ export class CarComponent implements OnInit {
     this.activatedRoute.params.subscribe((params) => {
       if (params['colorId']) {
         this.getCarsByColor(params['colorId']);
-      }
-      if (params['brandId']) {
+      } else if (params['brandId']) {
         this.getCarsByBrand(params['brandId']);
+      } else if (params['brand'] && ['color']) {
+        this.getByBrandAndColor(params['brand'], params['color']);
       } else {
         this.getAllCars();
       }
@@ -51,6 +49,12 @@ export class CarComponent implements OnInit {
   getAllCars() {
     this.carService.getAllCars().subscribe((response) => {
       this.cars = response.data;
+    });
+  }
+  getByBrandAndColor(brand: string, color: string) {
+    this.carService.getByBrandAndColor(brand, color).subscribe((response) => {
+      this.filteredCars = response.data;
+      console.log(this.filteredCars);
     });
   }
 }

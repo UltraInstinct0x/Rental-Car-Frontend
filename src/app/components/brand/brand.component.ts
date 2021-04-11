@@ -11,6 +11,8 @@ export class BrandComponent implements OnInit {
 
   currentBrand:Brand = {id:0, name:""}
   brands:Brand[]=[];
+  clearBrand:Brand={id:0, name:""}
+  filterText!:string;
   constructor(private brandService:BrandService) { }
 
   ngOnInit(): void {
@@ -28,7 +30,7 @@ export class BrandComponent implements OnInit {
   }
 
   getCurrentBrandClass(brand:Brand){
-    if (brand == this.currentBrand) {
+    if (brand.id == this.currentBrand.id) {
       return 'list-group-item list-group-item-dark';
     } else {
       return 'list-group-item';

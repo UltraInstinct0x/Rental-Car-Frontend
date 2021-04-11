@@ -1,4 +1,12 @@
-<table class="table table-warning table-striped">
+<app-filtercars></app-filtercars>
+<div>
+    <div class="mb-3">
+        <label for="filterText" class="form-label">Car Search</label>
+        <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="Search for a car.">
+      </div>
+</div>
+
+<table *ngIf="cars.length>=1" class="table table-warning table-striped">
     <thead>
         <tr>
             <td>#</td>
@@ -10,7 +18,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let car of cars"
+        <tr *ngFor="let car of cars | carFilter:filterText"
         routerLink="/car/{{car.id}}">
             <td>{{car.id}}</td>
             <td>{{car.brandId}}</td>
@@ -22,3 +30,26 @@
     </tbody>
   </table>
 
+  <table *ngIf="filteredCars" class="table table-warning table-striped">
+    <thead>
+        <tr>
+            <td>#</td>
+            <td>Brand</td>
+            <td>Color</td>
+            <td>Model Year</td>
+            <td>Daily Price</td>
+            <td>Description</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let car of filteredCars"
+        routerLink="/car/{{car.id}}">
+            <td>{{car.id}}</td>
+            <td>{{car.brandName}}</td>
+            <td>{{car.colorName}}</td>
+            <td>{{car.modelYear}}</td>
+            <td>{{car.dailyPrice}}</td>
+            <td>{{car.description}}</td>
+        </tr>
+    </tbody>
+  </table>
